@@ -1,5 +1,9 @@
 import { ImageLogo } from "./styles.js";
 
-export default function Logo() {
-  return <ImageLogo src="/star-wars.png" />;
+export default function Logo({ image }) {
+  return <ImageLogo src={image} />;
 }
+
+Logo.defaultProps = {
+  image: "/star-wars.png",
+};

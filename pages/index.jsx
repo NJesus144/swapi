@@ -1,17 +1,16 @@
-import { SearchPeople } from "../src/components/searchPeople/SerachPeople"
-import Card from "../src/components/card/Card"
-import Navbar from "../src/components/navbar/Navbar"
+import { SearchPeople } from "../src/components/searchPeople/SerachPeople";
+import Card from "../src/components/card/Card";
+import Navbar from "../src/components/navbar/Navbar";
+import Body from "../src/components/body/Body";
 
-function HomePage () {
-  
+function HomePage() {
   return (
-    <div>
-    {/* <SearchPeople/> */}
-    <Navbar />
-      <Card />
-    </div>
-  )
+    <>
+      {/* <SearchPeople/> */}
+      <Navbar />
+      <Body />
+    </>
+  );
 }
 
-
-export default HomePage
+export default HomePage;

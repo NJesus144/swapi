@@ -1,10 +1,17 @@
-import {ContainerCard} from "./styles.js";
+import Link from "next/link";
 
-export default function Card(){
+import { ContainerCard, P, NavLink } from "./styles.js";
+import Logo from "../logo/Logo.jsx";
+
+export default function Card({ children, img }) {
   return (
-    <ContainerCard>
-    123
-    </ContainerCard>
-  )
+    <Link href={'#'} passHref>
+      <NavLink>
+        <ContainerCard>
+          <Logo image={img} />
+          <P>{children}</P>
+        </ContainerCard>
+      </NavLink>
+    </Link>
+  );
 }
-
