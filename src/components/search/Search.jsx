@@ -1,7 +1,6 @@
-import { useEffect, useState } from "react";
+import {useState } from "react";
 
-import RequestAPI from "../../../pages/api/request/swapiGet";
-import CharacterPage from "../../../pages/character";
+
 import Body from "../body/Body";
 
 

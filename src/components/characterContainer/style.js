@@ -9,12 +9,9 @@ export const CharacterContainer = styled.div`
   border-top-left-radius: 6px;
   border-top-right-radius: 6px;
   transition: all 0.25s ease;
-
   :hover {
     transform: scale(1.05);
   }
-
-
 `;
 
 export const Img = styled.img`
@@ -24,7 +21,6 @@ export const Img = styled.img`
   border-top-left-radius: 6px;
   border-top-right-radius: 6px;
   border-bottom: 3px solid #9e4f60;
-
 `;
 
 export const ALink = styled.a`

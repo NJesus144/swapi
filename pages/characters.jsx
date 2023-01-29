@@ -1,11 +1,9 @@
 import styled from "styled-components";
 import { useState, useEffect } from "react";
-import { swapiGetCharacter, swapiGet } from "./api/request/swapiGet";
+import { swapiGetCharacter} from "./api/request/swapiGet";
 
 import Navbar from "../src/components/navbar/Navbar";
 import Character from "../src/components/characterContainer/CharacterContainer";
-
-
 
 const Button = styled.button`
 
@@ -22,7 +20,6 @@ const Button = styled.button`
   &:hover{
     transform: scale(1.05);
   }
-
 `;
 
 const ContainerPage = styled.div`
@@ -54,7 +51,7 @@ export default function CharacterPage() {
     };
     fetchData();
   }, []);
-  console.log(characters)
+
   return (
     <>
       <Navbar />
