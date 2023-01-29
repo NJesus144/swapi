@@ -5,10 +5,10 @@ import Card from "../card/Card"
 export default function Body() {
   return(
     <ContainerBody>
-    <Card img={'/darth.png'}>Characters</Card>
-    <Card img={'/starships.png'}>Starships</Card>
-    <Card img={'/movie.png'}>Films</Card>
-    <Card img={'/planets.png'}>Planets</Card>
+    <Card param={'/character'} img={'/darth.png'}>Characters</Card>
+    <Card param={'/starship'} img={'/starships.png'}>Starships</Card>
+    <Card param={'/film'} img={'/movie.png'}>Films</Card>
+    <Card param={'/planet'} img={'/planets.png'}>Planets</Card>
    
     </ContainerBody>
   )
