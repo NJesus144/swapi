@@ -1,40 +1,14 @@
-import styled from "styled-components";
 import { useState, useEffect } from "react";
-import { swapiGetCharacter} from "./api/request/swapiGet";
+import { swapiGetCharacter } from "./api/request/swapiGet";
 
 import Navbar from "../src/components/navbar/Navbar";
-import Character from "../src/components/characterContainer/CharacterContainer";
+import { Btn } from "../src/components/button/Button";
+import { BodyPage } from "../src/layout/BodyPage";
+import { Container } from "../src/layout/Container";
+import { ContainerPage } from "../src/layout/containerPage/ContainerPage";
 
-const Button = styled.button`
 
-  padding: 15px 30px;
-  margin-left: auto;
-  margin-right: auto;
-  font-size: 18.4px;
-  display: block;
-  background-color: #ffe300;
-  border: none;
-  cursor: pointer;
-  transition: all .3s;
 
-  &:hover{
-    transform: scale(1.05);
-  }
-`;
-
-const ContainerPage = styled.div`
-  background-color: #eee;
-  padding-bottom: 30px ;
-`;
-
-const Container = styled.div`
-  display: flex;
-  padding: 30px;
-  justify-content: center;
-  gap: 25px;
-  flex-wrap: wrap;
-  background-color: #eee;
-`;
 
 export default function CharacterPage() {
   const [characters, setCharacters] = useState([]);
@@ -51,21 +25,23 @@ export default function CharacterPage() {
     };
     fetchData();
   }, []);
-
+console.log(characters)
   return (
     <>
       <Navbar />
-      <ContainerPage>
+      <BodyPage>
         <Container>
-          {characters.map((character, index) => index < value && (
-                  <Character character={character} key={character.id} />
-                )
-            )}
+          {characters.map(
+            (character, index) =>
+              index < value && (
+                <ContainerPage itemProps={character} key={character.id} />
+              )
+          )}
         </Container>
         {value < characters.length && (
-          <Button onClick={handleShowMore}>SHOW MORE</Button>
+          <Btn onClick={handleShowMore}>SHOW MORE</Btn>
         )}
-      </ContainerPage>
+      </BodyPage>
     </>
   );
 }

@@ -1,7 +1,8 @@
 import styled from "styled-components";
 
-export const CharacterContainer = styled.div`
+export const Container = styled.div`
   display: flex;
+  max-width: 300px;
   flex-direction: column;
   align-items: center;
   cursor: pointer;
@@ -35,4 +36,3 @@ export const ALink = styled.a`
       color: #9e4f60;
     }
 `;
-
