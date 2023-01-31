@@ -6,6 +6,7 @@ import { Btn } from "../src/components/button/Button";
 import { BodyPage } from "../src/layout/BodyPage";
 import { Container } from "../src/layout/Container";
 import { ContainerPage } from "../src/layout/containerPage/ContainerPage";
+import axios from "axios";
 
 
 
@@ -25,7 +26,8 @@ export default function CharacterPage() {
     };
     fetchData();
   }, []);
-console.log(characters)
+
+
   return (
     <>
       <Navbar />
