@@ -1,4 +1,5 @@
 import { createGlobalStyle } from "styled-components";
+import ResponseAPIProvider from "../src/Contexts/ResponseAPI";
 
 const GlobalStyle = createGlobalStyle`
 * {
@@ -16,8 +17,10 @@ body {
 function App({ Component, pageProps }) {
   return (
     <>
-      <GlobalStyle />
-      <Component {...pageProps} />
+      <ResponseAPIProvider>
+        <GlobalStyle />
+        <Component {...pageProps} />
+      </ResponseAPIProvider>
     </>
   );
 }
