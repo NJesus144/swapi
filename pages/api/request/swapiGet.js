@@ -15,7 +15,7 @@ export const swapiGetStarships = async (param) => {
   return response.data
 }
 
-export const starshipsNextAndPrevious = async (url) => {
+export const nextAndPrevious = async (url) => {
   const response =  await axios.get(url);
   return response.data
 }
@@ -25,8 +25,8 @@ export const swapiGetFilm = async () => {
   return response.data
 }
 
-export const swapiGetPlanets = async () => {
-  const response =  await axios.get(`${BASE_URL}planets/`);
+export const swapiGetPlanets = async (param) => {
+  const response =  await axios.get(`${BASE_URL}planets/?page=${param}`);
   return response.data
 }
 

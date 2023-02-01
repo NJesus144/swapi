@@ -1,18 +1,13 @@
-import { useState, useEffect } from "react";
 import styled from "styled-components";
+import { useState, useEffect } from "react";
 
-import {
-  swapiGetStarships,
-  nextAndPrevious,
-} from "./api/request/swapiGet";
-
+import { Planets } from "../src/components/CardsLayout/planets/Planets";
 import Navbar from "../src/components/navbar/Navbar";
-import { Btn } from "../src/components/button/Button";
-import { ContainerPage } from "../src/layout/containerPage/ContainerPage";
-import { BodyPage } from "../src/layout/BodyPage";
 import { Container } from "../src/layout/Container";
-
-
+import { BodyPage } from "../src/layout/BodyPage";
+import { Btn } from "../src/components/button/Button";
+import { swapiGetPlanets } from "./api/request/swapiGet";
+import { nextAndPrevious } from "./api/request/swapiGet";
 
 const BoxButton = styled.div`
   display: flex;
@@ -20,10 +15,10 @@ const BoxButton = styled.div`
   padding: 50px 0px;
 `;
 
-export default function StarshipPage() {
-  const [starships, setStarships] = useState([]);
+export default function PlanetPage() {
   const [actualPage, setActualPage] = useState(1);
 
+  const [planets, setPlanets] = useState([]);
   const [disabled, setDisabled] = useState(false);
   const [disabledPrev, setDisabledPrev] = useState(true);
 
@@ -32,18 +27,17 @@ export default function StarshipPage() {
   }, []);
 
   const fetchData = async () => {
-    const response = await swapiGetStarships(actualPage);
-    setStarships(response.results);
-    console.log(response)
+    const response = await swapiGetPlanets(actualPage);
+    setPlanets(response.results); 
     return response;
   };
-
 
   const handleNextPage = async () => {
     const response = await fetchData();
     setActualPage(actualPage + 1);
+  
     const resNextPAge = await nextAndPrevious(response.next);
-    setStarships(resNextPAge.results);
+    setPlanets(resNextPAge.results);
     setDisabledPrev(false);
 
     if (resNextPAge.next === null) {
@@ -56,7 +50,7 @@ export default function StarshipPage() {
     const response = await fetchData();
     setActualPage(actualPage - 1);
     const resNextPAge = await nextAndPrevious(response.previous);
-    setStarships(resNextPAge.results);
+    setPlanets(resNextPAge.results);
     setDisabled(false);
 
     if (resNextPAge.previous === null) {
@@ -66,12 +60,12 @@ export default function StarshipPage() {
   };
 
   return (
-    <>
+    <div>
       <Navbar />
       <BodyPage>
         <Container>
-          {starships.map((starship, index) => (
-            <ContainerPage itemProps={starship} key={index} />
+          {planets.map((planet, index) => (
+            <Planets planet={planet} indexID={index} key={index} />
           ))}
         </Container>
         <BoxButton>
@@ -83,6 +77,6 @@ export default function StarshipPage() {
           </Btn>
         </BoxButton>
       </BodyPage>
-    </>
+    </div>
   );
 }

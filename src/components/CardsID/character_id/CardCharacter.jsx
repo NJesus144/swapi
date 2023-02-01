@@ -9,7 +9,7 @@ import {
 } from "./styles";
 import Navbar from "../navbar/Navbar";
 
-export const CardCharacter = ({charID}) => {
+export const CardCharacter = ({charID, children}) => {
   return (
     <>
   <Navbar />
