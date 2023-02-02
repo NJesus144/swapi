@@ -8,9 +8,6 @@ import { Container } from "../src/layout/Container";
 import { ContainerPage } from "../src/layout/containerPage/ContainerPage";
 
 
-
-
-
 export default function CharacterPage() {
   const [characters, setCharacters] = useState([]);
   const [value, setValue] = useState(12);

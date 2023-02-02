@@ -7,8 +7,7 @@ function HomePage() {
   return (
     <>
       <Navbar />
-       <Body /> 
-      
+       <Body />   
     </>
   );
 }

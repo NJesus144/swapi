@@ -8,7 +8,7 @@ import { BodyPage } from "../../../layout/BodyPage.jsx";
 
 export const Planets = ({ planet, indexID, actualPage}) => {
   const router = useRouter();
-  const { responseAPI, setResponseAPI } = useContext(ResponseAPI);
+  const { setResponseAPI } = useContext(ResponseAPI);
 
 const showID = async () => {
 

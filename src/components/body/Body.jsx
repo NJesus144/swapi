@@ -8,7 +8,7 @@ export default function Body() {
       <Card param={"/characters"} img={"/darth.png"}>
         Characters
       </Card>
-      <Card param={"/starships"} img={"/starships.png"}>
+      <Card param={"/speciesPage"} img={"/starships.png"}>
         Starships
       </Card>
       <Card param={"/filmsPage"} img={"/movie.png"}>

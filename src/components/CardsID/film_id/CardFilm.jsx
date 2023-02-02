@@ -9,7 +9,7 @@ import {
 } from "./styles";
 import Navbar from "../../navbar/Navbar";
 
-export const CardFilm = ({film, indexID, image}) => {
+export const CardFilm = ({film}) => {
   const id = film.episode_id
   return (
     <>

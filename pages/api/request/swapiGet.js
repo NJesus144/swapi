@@ -10,8 +10,8 @@ export const swapiGetCharacter = async () => {
  return response.data
 }
 
-export const swapiGetStarships = async (param) => {
-  const response =  await axios.get(`${BASE_URL}starships/?page=${param}`);
+export const swapiGetSpecies = async (param) => {
+  const response =  await axios.get(`${BASE_URL}species/?page=${param}`);
   return response.data
 }
 

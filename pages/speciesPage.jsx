@@ -2,15 +2,15 @@ import { useState, useEffect } from "react";
 import styled from "styled-components";
 
 import {
-  swapiGetStarships,
+  swapiGetSpecies,
   nextAndPrevious,
 } from "./api/request/swapiGet";
 
 import Navbar from "../src/components/navbar/Navbar";
 import { Btn } from "../src/components/button/Button";
-import { ContainerPage } from "../src/layout/containerPage/ContainerPage";
 import { BodyPage } from "../src/layout/BodyPage";
 import { Container } from "../src/layout/Container";
+import { Species } from "../src/components/CardsLayout/species/Species";
 
 
 
@@ -20,8 +20,8 @@ const BoxButton = styled.div`
   padding: 50px 0px;
 `;
 
-export default function StarshipPage() {
-  const [starships, setStarships] = useState([]);
+export default function SpeciesPage() {
+  const [species, setSpecies] = useState([]);
   const [actualPage, setActualPage] = useState(1);
 
   const [disabled, setDisabled] = useState(false);
@@ -32,9 +32,9 @@ export default function StarshipPage() {
   }, []);
 
   const fetchData = async () => {
-    const response = await swapiGetStarships(actualPage);
-    setStarships(response.results);
-    console.log(response)
+    const response = await swapiGetSpecies(actualPage);
+    setSpecies(response.results);
+
     return response;
   };
 
@@ -43,7 +43,9 @@ export default function StarshipPage() {
     const response = await fetchData();
     setActualPage(actualPage + 1);
     const resNextPAge = await nextAndPrevious(response.next);
-    setStarships(resNextPAge.results);
+
+
+    setSpecies(resNextPAge.results);
     setDisabledPrev(false);
 
     if (resNextPAge.next === null) {
@@ -56,7 +58,7 @@ export default function StarshipPage() {
     const response = await fetchData();
     setActualPage(actualPage - 1);
     const resNextPAge = await nextAndPrevious(response.previous);
-    setStarships(resNextPAge.results);
+    setSpecies(resNextPAge.results);
     setDisabled(false);
 
     if (resNextPAge.previous === null) {
@@ -70,8 +72,8 @@ export default function StarshipPage() {
       <Navbar />
       <BodyPage>
         <Container>
-          {starships.map((starship, index) => (
-            <ContainerPage itemProps={starship} key={index} />
+          {species.map((species, index) => (
+            <Species species={species} actualPage={actualPage} key={index} indexID={index}/>
           ))}
         </Container>
         <BoxButton>
