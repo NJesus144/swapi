@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { ResponseAPI } from "../src/Contexts/ResponseAPI";
-import { CardSpecies } from "../src/components/CardsID/species_id/CardSpecies";
+import { CardCharacter } from "../src/components/CardsID/character_id/CardCharacter";
 import { useRouter } from "next/router";
 import { Btn } from "../src/components/button/Button";
 
@@ -10,13 +10,13 @@ export default function starshipId() {
   const router = useRouter();
 
   const goBack = () => {
-    router.push("/speciesPage");
+    router.push("/charactersPage");
   };
 
   return (
     <div>
-      {responseAPI.map((species, index) => (
-        <CardSpecies species={species} key={index}/>
+      {responseAPI.map((character, index) => (
+        <CardCharacter character={character} key={index} />
       ))}
       <Btn onClick={goBack}>Back</Btn>
     </div>

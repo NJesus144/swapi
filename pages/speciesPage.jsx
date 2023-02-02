@@ -1,18 +1,13 @@
 import { useState, useEffect } from "react";
 import styled from "styled-components";
 
-import {
-  swapiGetSpecies,
-  nextAndPrevious,
-} from "./api/request/swapiGet";
+import { swapiGetSpecies, nextAndPrevious } from "./api/request/swapiGet";
 
 import Navbar from "../src/components/navbar/Navbar";
 import { Btn } from "../src/components/button/Button";
 import { BodyPage } from "../src/layout/BodyPage";
 import { Container } from "../src/layout/Container";
 import { Species } from "../src/components/CardsLayout/species/Species";
-
-
 
 const BoxButton = styled.div`
   display: flex;
@@ -38,12 +33,10 @@ export default function SpeciesPage() {
     return response;
   };
 
-
   const handleNextPage = async () => {
     const response = await fetchData();
     setActualPage(actualPage + 1);
     const resNextPAge = await nextAndPrevious(response.next);
-
 
     setSpecies(resNextPAge.results);
     setDisabledPrev(false);
@@ -73,7 +66,12 @@ export default function SpeciesPage() {
       <BodyPage>
         <Container>
           {species.map((species, index) => (
-            <Species species={species} actualPage={actualPage} key={index} indexID={index}/>
+            <Species
+              species={species}
+              actualPage={actualPage}
+              key={index}
+              indexID={index}
+            />
           ))}
         </Container>
         <BoxButton>

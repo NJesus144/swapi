@@ -10,8 +10,6 @@ const GlobalStyle = createGlobalStyle`
 body {
   font-family: 'Roboto', sans-serif;
 }
-
-
 `;
 
 function App({ Component, pageProps }) {

@@ -5,7 +5,7 @@ import { useRouter } from "next/router";
 import { Btn } from "../src/components/button/Button";
 
 export default function PlanetId() {
-  const { responseAPI, setResponseAPI } = useContext(ResponseAPI);
+  const { responseAPI } = useContext(ResponseAPI);
 
   const router = useRouter();
 

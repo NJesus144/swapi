@@ -5,8 +5,7 @@ import Navbar from "../src/components/navbar/Navbar";
 import { Btn } from "../src/components/button/Button";
 import { BodyPage } from "../src/layout/BodyPage";
 import { Container } from "../src/layout/Container";
-import { ContainerPage } from "../src/layout/containerPage/ContainerPage";
-
+import { Character } from "../src/components/CardsLayout/character/Character";
 
 export default function CharacterPage() {
   const [characters, setCharacters] = useState([]);
@@ -24,7 +23,6 @@ export default function CharacterPage() {
     fetchData();
   }, []);
 
-
   return (
     <>
       <Navbar />
@@ -33,7 +31,7 @@ export default function CharacterPage() {
           {characters.map(
             (character, index) =>
               index < value && (
-                <ContainerPage itemProps={character} key={character.id} />
+                <Character character={character} key={character.id} />
               )
           )}
         </Container>

@@ -6,6 +6,7 @@ import {
   P,
   Image,
   DivName,
+  Span
 } from "./styles";
 import Navbar from "../../navbar/Navbar";
 
@@ -14,18 +15,24 @@ export const CardPlanet = ({planet}) => {
     <>
   <Navbar />
     <Container>
-      <ContainerInfo>
         <Image src="/planet-star-wars.png" />
         <ContainerDetails>
           <DivName>
             <H1>{planet.name}</H1>
           </DivName>
-          <P>Climate: {planet.climate}</P>
-          <P>Population: {planet.population}</P>
-          <P>Gravity: {planet.gravity}</P>
-       
-        </ContainerDetails>
+      <ContainerInfo>
+          <P>Climate</P>
+          <Span> {planet.climate}</Span>
       </ContainerInfo>
+      <ContainerInfo>
+          <P>Population</P>
+          <Span>{planet.population}</Span>
+      </ContainerInfo>
+      <ContainerInfo>
+          <P>Gravity</P>
+          <Span>{planet.gravity}</Span>
+      </ContainerInfo>     
+        </ContainerDetails>
     </Container>
     </>
   );

@@ -19,18 +19,18 @@ const ContainerWidth = styled.div`
 export default function FilmPage() {
   const router = useRouter();
 
-const goBack = () => {
-  router.push('/')
-}
+  const goBack = () => {
+    router.push("/");
+  };
 
   return (
     <>
       <BgContainer>
-      <Navbar />
+        <Navbar />
         <ContainerWidth>
           <Container>
             {PosterFilm.map((film, index) => (
-              <Films film={film}  key={film.id} id={film.id} indexID={index}/>
+              <Films film={film} key={film.id} id={film.id} indexID={index} />
             ))}
           </Container>
         </ContainerWidth>

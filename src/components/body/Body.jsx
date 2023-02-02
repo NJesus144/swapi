@@ -5,7 +5,7 @@ import Card from "../card/Card";
 export default function Body() {
   return (
     <ContainerBody>
-      <Card param={"/characters"} img={"/darth.png"}>
+      <Card param={"/charactersPage"} img={"/darth.png"}>
         Characters
       </Card>
       <Card param={"/speciesPage"} img={"yoda3.png"}>

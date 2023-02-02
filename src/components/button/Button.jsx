@@ -10,6 +10,7 @@ const Button = styled.button`
   border: none;
   cursor: pointer;
   transition: all 0.3s;
+  margin-bottom: 10px;
 
   &:hover {
     transform: scale(1.05);

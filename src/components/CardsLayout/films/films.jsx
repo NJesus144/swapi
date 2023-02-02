@@ -6,7 +6,7 @@ import axios from "axios";
 
 export const Films = ({ film, indexID, id }) => {
   const router = useRouter();
-  const { responseAPI, setResponseAPI } = useContext(ResponseAPI);
+  const { setResponseAPI } = useContext(ResponseAPI);
 
   const showID = async () => {
     const id = indexID + 1;

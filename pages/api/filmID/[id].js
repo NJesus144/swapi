@@ -5,8 +5,10 @@ export default async function Planets(req, res) {
 
   try {
     const response = await axios.get(`https://swapi.dev/api/films/${id}/`);
-    res.status(200).send(response.data);
+      res.status(200).send(response.data);
+
+    res.status(400).send("Bad_Request");   
   } catch (e) {
-    console.log(e);
+   
   }
 }

@@ -6,6 +6,7 @@ import {
   P,
   Image,
   DivName,
+  Span
 } from "./styles";
 import Navbar from "../../navbar/Navbar";
 
@@ -15,7 +16,6 @@ export const CardFilm = ({film}) => {
     <>
   <Navbar />
     <Container>
-      <ContainerInfo>
         <Image 
         src={
           id === 1 ? 'The_Phantom_Menace.jpg': ''||     
@@ -28,13 +28,23 @@ export const CardFilm = ({film}) => {
           <DivName>
             <H1>{film.title}</H1>
           </DivName>
-          <P>Episode: {film.episode_id}</P>
-          <P>Opening: {film.opening_crawl}</P>
-          <P>Producer: {film.producer}</P>
-          <P>Release Date: {film.release_date}</P>
-      
-        </ContainerDetails>
+      <ContainerInfo>
+          <P>Episode</P>
+          <Span>{film.episode_id}</Span>
       </ContainerInfo>
+      <ContainerInfo>
+          <P>Opening</P> 
+          <Span>{film.opening_crawl}</Span>
+      </ContainerInfo>
+      <ContainerInfo>
+          <P>Producer</P>
+          <Span>{film.producer}</Span>
+      </ContainerInfo>
+      <ContainerInfo>
+          <P>Release Date</P>
+          <Span>{film.release_date}</Span>
+      </ContainerInfo>   
+        </ContainerDetails>
     </Container>
     </>
   );

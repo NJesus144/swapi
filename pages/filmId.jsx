@@ -11,9 +11,8 @@ const ButtonBox = styled.div`
 `;
 
 export default function FilmId() {
-  const { responseAPI, setResponseAPI } = useContext(ResponseAPI);
+  const { responseAPI } = useContext(ResponseAPI);
   const router = useRouter();
-
 
   const goBack = () => {
     router.push("/filmsPage");
@@ -22,7 +21,7 @@ export default function FilmId() {
   return (
     <div>
       {responseAPI.map((film, index) => (
-        <CardFilm film={film} indexID={index} key={index}/>
+        <CardFilm film={film} indexID={index} key={index} />
       ))}
       <ButtonBox>
         <Btn onClick={goBack}>Back</Btn>

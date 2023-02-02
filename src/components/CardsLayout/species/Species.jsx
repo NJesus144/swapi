@@ -17,8 +17,8 @@ export const Species = ({ species, indexID, actualPage }) => {
       if (actualPage === 3) return 20 + indexID + 1;
       if (actualPage === 4) return 30 + indexID + 1;
     };
+
     const id = findOutTheTd();
-    console.log(id);
     const response = await axios.get(`/api/speciesID/${id}`);
     setResponseAPI([response.data]);
     router.push({
