@@ -8,9 +8,21 @@ import { BodyPage } from "../src/layout/BodyPage";
 import { Btn } from "../src/components/button/Button";
 import { swapiGetPlanets } from "./api/request/swapiGet";
 import { nextAndPrevious } from "./api/request/swapiGet";
+import LoadingIcon from "../src/components/loadingIcon/LoadingIcon";
 
 const BoxButton = styled.div`
   display: flex;
+`;
+
+const ContainerBody = styled.div`
+  height: 100vh;
+  background-color: #f1f2f3;
+`;
+
+const BoxAlignItem = styled.div`
+  display: flex;
+  flex-direction: column;
+  background-color: #f1f2f3;
 `;
 
 export default function PlanetPage() {
@@ -57,28 +69,32 @@ export default function PlanetPage() {
   };
 
   return (
-    <div>
+    <>
       <Navbar />
-      <BodyPage>
-        <Container>
-          {planets.map((planet, index) => (
-            <Planets
-              planet={planet}
-              actualPage={actualPage}
-              indexID={index}
-              key={index}
-            />
-          ))}
-        </Container>
-        <BoxButton>
-          <Btn disabled={disabledPrev} onClick={handlePrevPage}>
-            PREV
-          </Btn>
-          <Btn disabled={disabled} onClick={handleNextPage}>
-            NEXT
-          </Btn>
-        </BoxButton>
-      </BodyPage>
-    </div>
+      <ContainerBody>
+        <LoadingIcon setStatus={planets}>
+          <BoxAlignItem>
+            <Container>
+              {planets.map((planet, index) => (
+                <Planets
+                  planet={planet}
+                  actualPage={actualPage}
+                  indexID={index}
+                  key={index}
+                />
+              ))}
+            </Container>
+            <BoxButton>
+              <Btn disabled={disabledPrev} onClick={handlePrevPage}>
+                PREV
+              </Btn>
+              <Btn disabled={disabled} onClick={handleNextPage}>
+                NEXT
+              </Btn>
+            </BoxButton>
+          </BoxAlignItem>
+        </LoadingIcon>
+      </ContainerBody>
+    </>
   );
 }
