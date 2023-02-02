@@ -9,11 +9,7 @@ import { Btn } from "../src/components/button/Button";
 import { swapiGetPlanets } from "./api/request/swapiGet";
 import { nextAndPrevious } from "./api/request/swapiGet";
 
-const BoxButton = styled.div`
-  display: flex;
-  gap: 10px;
-  padding: 50px 0px;
-`;
+const BoxButton = styled.div`display: flex;`;
 
 export default function PlanetPage() {
   const [actualPage, setActualPage] = useState(1);
@@ -28,14 +24,13 @@ export default function PlanetPage() {
 
   const fetchData = async () => {
     const response = await swapiGetPlanets(actualPage);
-    setPlanets(response.results); 
+    setPlanets(response.results);
     return response;
   };
 
   const handleNextPage = async () => {
     const response = await fetchData();
     setActualPage(actualPage + 1);
-  
     const resNextPAge = await nextAndPrevious(response.next);
     setPlanets(resNextPAge.results);
     setDisabledPrev(false);
@@ -65,7 +60,7 @@ export default function PlanetPage() {
       <BodyPage>
         <Container>
           {planets.map((planet, index) => (
-            <Planets planet={planet} indexID={index} key={index} />
+            <Planets planet={planet} actualPage={actualPage} indexID={index} key={index} />
           ))}
         </Container>
         <BoxButton>

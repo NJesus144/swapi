@@ -16,8 +16,8 @@ export const ContainerFilm = styled.div`
 `;
 
 export const Img = styled.img`
-  height: 300px;
-  width: 300px;
+  height: 250px;
+  width: 250px;
 
   border-top-left-radius: 6px;
   border-top-right-radius: 6px;

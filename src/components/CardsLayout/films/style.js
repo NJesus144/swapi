@@ -26,7 +26,6 @@ export const Img = styled.img`
 
 export const ALink = styled.a`
   padding: 6px;
-
   color: #0c0907;
   text-transform: uppercase;
     border-bottom-left-radius: 6px;

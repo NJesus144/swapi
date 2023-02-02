@@ -6,18 +6,28 @@ import { useRouter } from "next/router.js";
 
 import { BodyPage } from "../../../layout/BodyPage.jsx";
 
-export const Planets = ({ planet, indexID }) => {
+export const Planets = ({ planet, indexID, actualPage}) => {
   const router = useRouter();
   const { responseAPI, setResponseAPI } = useContext(ResponseAPI);
 
-  const showID = async () => {
-    const id = indexID + 1;
+const showID = async () => {
+
+   const findOutTheTd = () => {
+    if(actualPage === 1) return indexID + 1
+    if(actualPage === 2 ) return 10 + indexID + 1
+    if(actualPage === 3) return 20 + indexID + 1
+    if(actualPage === 4) return 30 + indexID + 1
+    if(actualPage === 5) return 40 + indexID + 1
+    if(actualPage === 6) return 50 + indexID + 1
+   }
+   const id = findOutTheTd();
+  
     const response = await axios.get(`/api/planetID/${id}`);
     setResponseAPI([response.data]);
     router.push({
-      pathname: "/planetsID",
+      pathname: "/planetId",
     });
-  };
+   };
 
   return (
     <BodyPage>
