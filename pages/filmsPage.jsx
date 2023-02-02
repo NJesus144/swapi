@@ -7,7 +7,7 @@ import { useRouter } from "next/router";
 import { Btn } from "../src/components/button/Button";
 
 const BgContainer = styled.div`
-  background-color: #eee;
+  background-color: #F1F2F3;
 `;
 
 const ContainerWidth = styled.div`
