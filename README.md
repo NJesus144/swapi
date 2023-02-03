@@ -10,7 +10,7 @@ para fornecer os dados dos planetas -> https://swapi.dev/documentation#planets,
 espécies ->https://swapi.dev/documentation#species e filmes -> https://swapi.dev/documentation#films.
 E foi usada a API https://akabab.github.io/starwars-api/, para pegar os personagens. 
 
-O propósito da aplicação é fazer requisições a api, através do backend do Nextjs, e listar na tela os personagens, especies, filmes e planetas. E Redirecionar o usuário para uma outra tela com mais detalhes por meio do id do item selecionado.
+O propósito da aplicação é fazer requisições a uma API, por meio do backend do Nextjs, e listar na tela os personagens, especies, filmes e planetas. E Redirecionar o usuário para uma outra tela com mais detalhes por meio do id do item selecionado.
 
 
 
