@@ -15,13 +15,13 @@ const BoxButton = styled.div`
 `;
 const ContainerBody = styled.div`
   height: 100vh;
-  background-color: #F1F2F3;
+  background-color: #f1f2f3;
 `;
 
 const BoxAlignItem = styled.div`
-display: flex;
-flex-direction: column;
-background-color: #F1F2F3;
+  display: flex;
+  flex-direction: column;
+  background-color: #f1f2f3;
 `;
 
 export default function SpeciesPage() {
@@ -32,41 +32,55 @@ export default function SpeciesPage() {
   const [disabledPrev, setDisabledPrev] = useState(true);
 
   useEffect(() => {
-    fetchData();
+    swapiGetSpecies(actualPage).then((response) => {
+      setSpecies(response.results);
+    });
+
+    // fetchData();
   }, []);
 
-  const fetchData = async () => {
-    const response = await swapiGetSpecies(actualPage);
-    setSpecies(response.results);
+  // const fetchData = async () => {
+  //   const response = await swapiGetSpecies(actualPage);
+  //   setSpecies(response.results);
 
-    return response;
-  };
+  //   return response;
+  // };
 
-  const handleNextPage = async () => {
-    const response = await fetchData();
-    setActualPage(actualPage + 1);
-    const resNextPAge = await nextAndPrevious(response.next);
+  const handleNextPage = () => {
+    swapiGetSpecies(actualPage)
+    .then((response) => {
+      setSpecies(response.results);
+      setActualPage(actualPage + 1);
 
-    setSpecies(resNextPAge.results);
-    setDisabledPrev(false);
+      nextAndPrevious(response.next)
+      .then((response) => {
+        setSpecies(response.results);
+        setDisabledPrev(false);
 
-    if (resNextPAge.next === null) {
-      setDisabled(true);
-      setDisabledPrev(false);
-    }
+        if (response.next === null) {
+          setDisabled(true);
+          setDisabledPrev(false);
+        }
+      });
+    });
   };
 
   const handlePrevPage = async () => {
-    const response = await fetchData();
-    setActualPage(actualPage - 1);
-    const resNextPAge = await nextAndPrevious(response.previous);
-    setSpecies(resNextPAge.results);
-    setDisabled(false);
+    swapiGetSpecies(actualPage)
+    .then((response) => {
+      setSpecies(response.results);
+      setActualPage(actualPage - 1);
 
-    if (resNextPAge.previous === null) {
-      setDisabledPrev(true);
-      setDisabled(false);
-    }
+      nextAndPrevious(response.previous)
+        .then((response) => {
+          setSpecies(response.results);
+          setDisabled(false);
+                if (response.previous === null) {
+                  setDisabledPrev(true);
+                  setDisabled(false);
+                }
+        })
+    });
   };
 
   return (
@@ -74,18 +88,17 @@ export default function SpeciesPage() {
       <Navbar />
       <ContainerBody>
         <LoadingIcon setStatus={species}>
-        <BoxAlignItem>
-
-          <Container>
-            {species.map((species, index) => (
-              <Species
-                species={species}
-                actualPage={actualPage}
-                key={index}
-                indexID={index}
-              />
-            ))}
-          </Container>
+          <BoxAlignItem>
+            <Container>
+              {species.map((species, index) => (
+                <Species
+                  species={species}
+                  actualPage={actualPage}
+                  key={index}
+                  indexID={index}
+                />
+              ))}
+            </Container>
             <BoxButton>
               <Btn disabled={disabledPrev} onClick={handlePrevPage}>
                 PREV
@@ -94,7 +107,7 @@ export default function SpeciesPage() {
                 NEXT
               </Btn>
             </BoxButton>
-        </BoxAlignItem>
+          </BoxAlignItem>
         </LoadingIcon>
       </ContainerBody>
     </>
